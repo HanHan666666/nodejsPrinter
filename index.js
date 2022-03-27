@@ -53,7 +53,8 @@ app.post('/fileUpload', function(req, res) {
         //执行打印命令
         // exec(comd)
     }
-    res.send('upload successfully')
+    res.send('上传成功')
+        // res.send()
 
     /* 
     // 上传的文件在req.files中

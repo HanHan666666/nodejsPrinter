@@ -7,27 +7,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>666666</title>
 </head>
+
 <script>
-    // 进度条占比计算
-    xhr.upload.onprogress = function(event) {
-        if (event.lengthComputable) {
-            let complete = (event.loaded / event.total * 100 | 0);
-            $("#uploadprogress").val(complete);
-            $("#uploadprogress").innerHTML = complete;
+    let form = $("#upload-form");
+    form.on('submit', function(event) {
+
+        // 清除提交结果显示信息
+        $("#msg").html("");
+
+        // 在原页面处理，不跳转
+        event.preventDefault();
+
+        // 检查是否支持FormData
+        if (window.FormData) {
+            // 清空旧内容
+            $("#msg").html("");
+            //控制进度条显示上传进度
+            let progress = $("#progress");
+            progress.show();
+
+
+            // 定义上传完成后的回调函数
+            xhr.onload = function(e) {
+                if (xhr.status === 200) {
+                    $("#msg").html("上传成功!");
+                    // alert('上传成功！');
+                } else {
+                    // alert('文件上传出错了！')
+                    $("#msg").html("上传失败!");
+                }
+            };
+            // 发送表单数据
+            xhr.send(formData);
         }
-    };
+    });
 </script>
 
+
 <body>
-    <form action="/fileUpload" method="POST" enctype="multipart/form-data">
+    <form action="/fileUpload" method="POST" target="frame1" id="upload-form" enctype="multipart/form-data">
         <label for="file">上传文件：</label>
         <input type="file" name="file" id="file" multiple><br />
-
         <input type="submit" value="提交">
+        <!-- 进度条 -->
+        <progress id="uploadprogress" min="0" max="100" value="0">0</progress>
+        <p id='msg'></p>
     </form>
-    <progress id="uploadprogress" min="0" max="100" value="0">0</progress>
-
-
+    <iframe name="frame1" frameborder="0" height="40"></iframe>
 
 </body>
 
