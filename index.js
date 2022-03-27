@@ -56,30 +56,6 @@ app.post('/fileUpload', function(req, res) {
     res.send('上传成功')
         // res.send()
 
-    /* 
-    // 上传的文件在req.files中
-    console.log(req.files[0].filename)
-    console.log(new Date().getTime())
-
-    //设置上传路径+时间戳命名+文件扩展名
-    let filename = req.files[0].destination + new Date().getTime() + pathLib.parse(req.files[0].originalname).ext;
-
-    // const filename = req.files[0].path + pathLib.parse(req.files[0].originalname).ext
-    // req.files.filename = new Date().Format("yyyy-MM-dd HH:mm:ss")
-    // var file = new Date().getTime();
-    // filename = timestamp;
-    console.log(filename);
-    fs.rename(req.files[0].path, filename, function(err) {
-        if (err) {
-            res.send(err)
-        } else {
-            res.send('upload successfully')
-
-            // res.send('index.js')
-        }
-    })
-    console.log(req.files)
-    console.log(__dirname)
 
 
     //组合打印命令
