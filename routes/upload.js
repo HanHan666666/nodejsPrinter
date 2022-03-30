@@ -11,15 +11,17 @@ const bodyParser = require('body-parser')
     // 引入multer中间件，用于处理上传的文件数据
 const multer = require('multer')
 
-var app = express();
 
+
+// 读取静态资源
+router.use(express.static('public'));
 // 通过配置multer的dest属性， 将文件储存在项目下的tmp文件中
-app.use(multer({
-    dest: 'tmp/'
-}).any())
+router.use(multer({
+    dest: __dirname + '/../tmp/'
+}).any());
 
 router.get('/', function(res, rep) {
-    rep.send('文件上传接口');
+    // rep.send('文件上传接口');
     // rep.sendFile(__dirname + 'index4.ejs')
 
 });
@@ -32,7 +34,7 @@ router.post('/', function(req, res) {
         let filename = req.files[i].destination + new Date().getTime() + pathLib.parse(req.files[i].originalname).ext;
         fs.rename(req.files[i].path, filename, function(err) {
                 if (err) {
-                    res.send(err)
+                    res.send(err);
                 } else {
 
                 }
@@ -40,13 +42,14 @@ router.post('/', function(req, res) {
             // res.send('upload successfully')
 
         //组合打印命令
-        // let comd = __dirname + "\\src\\bin\\SumatraPDF.exe " + "-print-to-default " + __dirname + "/" + filename;
-
+        let comd = __dirname + "\\..\\src\\bin\\SumatraPDF.exe " + "-print-to-default " + __dirname + "/" + filename;
+        console.log(comd);
         //执行打印命令
         // exec(comd)
     }
-    res.send('上传成功')
-        // res.send()
+    res.send('上传成功');
+
+    // res.send()
 
 
 
