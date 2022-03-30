@@ -3,7 +3,7 @@
 
 ## Usage
 ```
-npm install
 npm install git+https://github.com/tojocky/node-printer.git
+npm install
 npm run start
 ```
