@@ -1,59 +1,45 @@
-doctype html(lang='zh-cn')
-head
-    meta(charset='UTF-8')
-    |     
-    meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    |     
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    |     
-    title #{title}
+html
+  head
+    meta(http-equiv='Content-Type' content='text/html; charset=UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title 文件上传
   body
-    form#upload-form(action='/upload', method='POST', target='frame1', enctype='multipart/form-data')
-      label(for='file') &#x4E0A;&#x4F20;&#x6587;&#x4EF6;&#xFF1A;
-      |         
-      input#file(type='file', name='file', multiple='')
+    form#upload-form(action='/upload' method='POST' target='frame1' enctype='multipart/form-data')
+      label(for='file')
+        | 上传文件：
+      input#file(type='file' name='file' multiple='')
       br
-      |         
       p
-        | &#x7EB8;&#x5F20;&#x7C7B;&#x578B;&#xFF1A;
+        | 选择打印机：
+        select(name='' id='')
+          option(value='') 请选择打印机
+          option(value='') 打印机1
+          option(value='') 打印机2
+          option(value='') 打印机3
+      p
+        | 纸张类型：
         select(name='paperType')
           option(value='A4') A4
-          |                 
           option(value='A3') A3
-          |                 
           option(value='A2') A2
-          |                 
           option(value='A5') A5
-          |                 
           option(value='A6') A6
-          |                 
           option(value='letter') letter
-          |                 
           option(value='legal') legal
-      |         
       p
-        | &#x7EB8;&#x5F20;&#x65B9;&#x5411;&#xFF1A;
+        | 纸张方向：
         select(name='paperOrientation')
           option(value='portrait') portrait
-          |                 
           option(value='landscape') landscape
-      |         
       p
-        | &#x9875;&#x7801;&#xFF1A;
-        input(type='text', name='page', value='全部')
-      |         
+        | 页码：
+        input(type='text' name='page' value='全部')
       p
-      |         
       p
-        | &#x4EFD;&#x6570;&#xFF1A;
-        input(type='text', name='copies', value='1')
-      |         
+        | 份数：
+        input(type='text' name='copies' value='1')
       p
-      |         
-      input#sub(type='submit', value='提交')
-     
+      input#sub(type='submit' value='提交')
       p#msg
-    |     
-    iframe#ifr(name='frame1', frameborder='0', height='40')
-  script(src='/src/javascript/jquery-3.6.0.js')
-  script.
+    iframe#ifr(name='frame1' frameborder='0' height='40' )

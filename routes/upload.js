@@ -21,7 +21,7 @@ router.use(multer({
 }).any());
 
 router.get('/', function(res, rep) {
-    // rep.send('文件上传接口');
+    rep.send('文件上传接口');
     // rep.sendFile(__dirname + 'index4.ejs')
 
 });
@@ -47,7 +47,7 @@ router.post('/', function(req, res) {
         //执行打印命令
         // exec(comd)
     }
-    res.send('上传成功');
+    res.send('上传成功\n');
 
     // res.send()
 

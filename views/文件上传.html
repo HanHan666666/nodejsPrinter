@@ -1,0 +1,45 @@
+<!DOCTYPE html(lang='zh-cn' )>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件上传</title>
+</head>
+
+<body>
+    <form id="upload-form" action="/upload" method="POST" target="frame1" enctype="multipart/form-data">
+        <label for="file">上传文件：
+        </label>
+        <input id="file" type="file" name="file" multiple=""><br>
+        <p>选择打印机：<select name="" id="">
+            <option value="">请选择打印机</option>
+            <option value="">打印机1</option>
+            <option value="">打印机2</option>
+            <option value="">打印机3</option>
+        </select></p>
+        <p>纸张类型：<select name="paperType">
+                <option value="A4">A4</option>
+                <option value="A3">A3</option>
+                <option value="A2">A2</option>
+                <option value="A5">A5</option>
+                <option value="A6">A6</option>
+                <option value="letter">letter</option>
+                <option value="legal">legal</option>
+            </select></p>
+        <p>纸张方向：<select name="paperOrientation">
+                <option value="portrait">portrait</option>
+                <option value="landscape">landscape</option>
+            </select></p>
+        <p>页码：<input type="text" name="page" value="全部"></p>
+        <p></p>
+        <p>份数：<input type="text" name="copies" value="1"></p>
+        <p></p> <input id="sub" type="submit" value="提交">
+        <p id="msg"></p>
+    </form>
+    <iframe id="ifr" name="frame1" frameborder="0" height="40" src="./文件上传_files/saved_resource.html"></iframe>
+
+</body>
+
+</html>
