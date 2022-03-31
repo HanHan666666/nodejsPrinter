@@ -38,13 +38,12 @@ router.post('/', function(req, res) {
         console.log(req.files[i])
         let filename = req.files[i].destination + new Date().getTime() + pathLib.parse(req.files[i].originalname).ext;
         fs.rename(req.files[i].path, filename, function(err) {
-                if (err) {
-                    res.send(err);
-                } else {
+            if (err) {
+                res.send(err);
+            } else {
 
-                }
-            })
-            // res.send('upload successfully')
+            }
+        })
         let exe = __dirname + "\\..\\src\\bin\\SumatraPDF.exe ";
         let printTo = "-print-to " + printers + " ";
         let printSetting = "-print-settings " + "paper=" + paperType + "," + paperOrientation + "," + page + " ";
@@ -53,28 +52,11 @@ router.post('/', function(req, res) {
         //组合打印命令
         // let comd = __dirname + "\\..\\src\\bin\\SumatraPDF.exe " + "-print-to " + printers + " -print-settings " + paperType + " " + __dirname + "/" + filename;
         let comd = exe + printTo + printSetting + printCopies + filename;
-        // let comd = __dirname + "\\..\\src\\bin\\SumatraPDF.exe " + "-print-to-default " + __dirname + "/" + filename;
         console.log(comd);
         //执行打印命令
         // exec(comd)
     }
     res.send('上传成功\n');
-
-    // res.send()
-
-
-
-
-
-    //执行打印命令
-    // exec(comd)
-
-    /*  //删除临时文件
-     fs.unlinkSync(filename, function(err) {
-         if (err) {
-             console.log(err)
-         }
-     }) */
 
 })
 
