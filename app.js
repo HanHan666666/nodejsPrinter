@@ -49,6 +49,7 @@ app.use(function(err, req, res, next) {
  * @param  {String} name 需要删除的文件名称
  * @return {Null}   
  * @author huangh 20170123
+ * @Url https://huanghui8030.github.io/node/delete.html
  */
 function deleteFile(url, name) {
     var files = [];
