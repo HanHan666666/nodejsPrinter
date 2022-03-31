@@ -64,9 +64,7 @@ router.post('/', function(req, res) {
 
 
 
-    //组合打印命令
-    let comd = __dirname + "\\src\\bin\\SumatraPDF.exe " + "-print-to-default " + __dirname + "/" + filename;
-    console.log(comd)
+
 
     //执行打印命令
     // exec(comd)
