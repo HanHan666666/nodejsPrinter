@@ -13,21 +13,23 @@
         <label for="file">上传文件：
         </label>
         <input id="file" type="file" name="file" multiple=""><br>
-        <p>选择打印机：<select name="" id="">
-            <option value="">请选择打印机</option>
-            <option value="">打印机1</option>
-            <option value="">打印机2</option>
-            <option value="">打印机3</option>
-        </select></p>
-        <p>纸张类型：<select name="paperType">
-                <option value="A4">A4</option>
-                <option value="A3">A3</option>
-                <option value="A2">A2</option>
-                <option value="A5">A5</option>
-                <option value="A6">A6</option>
-                <option value="letter">letter</option>
-                <option value="legal">legal</option>
+        <p>选择打印机：
+            <select name="printers">
+                <option value="打印机1">打印机1</option>
+                <option value="打印机2">打印机2</option>
+                <option value="打印机3">打印机3</option>
             </select></p>
+        <p>纸张类型：
+            <select name="paperType">
+                    <option value="A4">A4</option>
+                    <option value="A3">A3</option>
+                    <option value="A2">A2</option>
+                    <option value="A5">A5</option>
+                    <option value="A6">A6</option>
+                    <option value="letter">letter</option>
+                    <option value="legal">legal</option>
+                </select></p>
+
         <p>纸张方向：<select name="paperOrientation">
                 <option value="portrait">portrait</option>
                 <option value="landscape">landscape</option>
@@ -38,7 +40,7 @@
         <p></p> <input id="sub" type="submit" value="提交">
         <p id="msg"></p>
     </form>
-    <iframe id="ifr" name="frame1" frameborder="0" height="40" src="./文件上传_files/saved_resource.html"></iframe>
+    <iframe id="ifr" name="frame1" frameborder="0" height="40" src=""></iframe>
 
 </body>
 

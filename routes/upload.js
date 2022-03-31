@@ -29,6 +29,11 @@ router.get('/', function(res, rep) {
 
 // 文件上传接口
 router.post('/', function(req, res) {
+    let printers = req.body.printers;
+    let paperType = req.body.paperType;
+    let paperOrientation = req.body.paperOrientation;
+    let page = req.body.page;
+    let copies = req.body.copies;
     for (let i = 0; i < req.files.length; i++) {
         console.log(req.files[i])
         let filename = req.files[i].destination + new Date().getTime() + pathLib.parse(req.files[i].originalname).ext;
@@ -40,9 +45,15 @@ router.post('/', function(req, res) {
                 }
             })
             // res.send('upload successfully')
+        let exe = __dirname + "\\..\\src\\bin\\SumatraPDF.exe ";
+        let printTo = "-print-to " + printers + " ";
+        let printSetting = "-print-settings " + "paper=" + paperType + "," + paperOrientation + "," + page + " ";
+        let printCopies = "-print-settings " + copies + "x ";
 
         //组合打印命令
-        let comd = __dirname + "\\..\\src\\bin\\SumatraPDF.exe " + "-print-to-default " + __dirname + "/" + filename;
+        // let comd = __dirname + "\\..\\src\\bin\\SumatraPDF.exe " + "-print-to " + printers + " -print-settings " + paperType + " " + __dirname + "/" + filename;
+        let comd = exe + printTo + printSetting + printCopies + filename;
+        // let comd = __dirname + "\\..\\src\\bin\\SumatraPDF.exe " + "-print-to-default " + __dirname + "/" + filename;
         console.log(comd);
         //执行打印命令
         // exec(comd)
