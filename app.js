@@ -6,7 +6,6 @@ var logger = require('morgan');
 
 const fs = require('fs'); // 引入文件系统模块
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var fileUpload = require('./routes/upload');
 var getPrinter = require('./routes/getPrinter');
 
@@ -23,7 +22,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/fileUpload', fileUpload);
 app.use('/getPrinter', getPrinter);
 // catch 404 and forward to error handler
