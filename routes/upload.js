@@ -54,7 +54,7 @@ router.post('/', function(req, res) {
         let comd = exe + printTo + printSetting + printCopies + filename;
         console.log(comd);
         //执行打印命令
-        // exec(comd)
+        exec(comd)
     }
     res.send('上传成功\n');
 
