@@ -7,7 +7,10 @@
     },
     "bin": "./bin/www",
     "pkg": {
-        "assets": ["views/**/*"],
+        "assets": [
+            "views/**/*",
+            "node_modules/**/*"
+        ],
         "outputPath": "dist"
     },
     "dependencies": {
@@ -19,6 +22,7 @@
         "morgan": "~1.9.1",
         "multer": "^1.4.4",
         "printer": "github:tojocky/node-printer",
+        "process": "^0.11.10",
         "regedit": "^5.0.0"
     }
 }

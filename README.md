@@ -7,3 +7,8 @@ npm install git+https://github.com/tojocky/node-printer.git
 npm install
 npm run start
 ```
+## Package
+```
+npm install -g pkg
+pkg -t win package.json
+```
