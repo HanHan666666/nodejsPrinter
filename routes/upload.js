@@ -19,7 +19,7 @@ const multer = require('multer')
 router.use(express.static('public'));
 // 通过配置multer的dest属性， 将文件储存在项目下的tmp文件中
 router.use(multer({
-    dest: process.cwd() + '/../tmp/'
+    dest: process.cwd() + '/tmp/'
 }).any());
 
 router.get('/', function(res, rep) {
@@ -46,7 +46,7 @@ router.post('/', function(req, res) {
 
             }
         })
-        let exe = process.cwd() + "\\..\\src\\bin\\SumatraPDF.exe ";
+        let exe = process.cwd() + "\\src\\SumatraPDF.exe ";
         let printTo = "-print-to " + printers + " ";
         let printSetting = "-print-settings " + "paper=" + paperType + "," + paperOrientation + "," + page + " ";
         let printCopies = "-print-settings " + copies + "x ";
