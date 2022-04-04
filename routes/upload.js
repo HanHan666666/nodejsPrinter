@@ -4,6 +4,8 @@ const router = express.Router();
 const exec = require('child_process').exec;
 const fs = require('fs');
 const pathLib = require('path');
+const process = require('process');
+
 
 
 // 引入body-parser中间件，用来处理post请求体body中的数据
@@ -17,7 +19,7 @@ const multer = require('multer')
 router.use(express.static('public'));
 // 通过配置multer的dest属性， 将文件储存在项目下的tmp文件中
 router.use(multer({
-    dest: __dirname + '/../tmp/'
+    dest: process.cwd() + '/tmp/'
 }).any());
 
 router.get('/', function(res, rep) {
@@ -44,7 +46,7 @@ router.post('/', function(req, res) {
 
             }
         })
-        let exe = __dirname + "\\..\\src\\bin\\SumatraPDF.exe ";
+        let exe = process.cwd() + "\\src\\SumatraPDF.exe ";
         let printTo = "-print-to " + printers + " ";
         let printSetting = "-print-settings " + "paper=" + paperType + "," + paperOrientation + "," + page + " ";
         let printCopies = "-print-settings " + copies + "x ";
@@ -54,7 +56,7 @@ router.post('/', function(req, res) {
         let comd = exe + printTo + printSetting + printCopies + filename;
         console.log(comd);
         //执行打印命令
-        // exec(comd)
+        exec(comd)
     }
     res.send('上传成功\n');
 

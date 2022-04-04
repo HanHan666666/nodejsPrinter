@@ -8,6 +8,7 @@ const fs = require('fs'); // 引入文件系统模块
 var indexRouter = require('./routes/index');
 var fileUpload = require('./routes/upload');
 var getPrinter = require('./routes/getPrinter');
+var getDefaultPrinterName = require('./routes/getDefaultPrinter');
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/fileUpload', fileUpload);
 app.use('/getPrinter', getPrinter);
+app.use('/getDefaultPrinter', getDefaultPrinterName);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));
