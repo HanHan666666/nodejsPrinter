@@ -1,68 +1,47 @@
-doctype html
 html
   head
-    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
-    |     
-    meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    |     
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    |     
-    title &#x6587;&#x4EF6;&#x4E0A;&#x4F20;
+    meta(http-equiv='Content-Type' content='text/html; charset=UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title 文件上传
   body
-    form#upload-form(action='/fileUpload', method='POST', target='frame1', enctype='multipart/form-data')
+    form#upload-form(action='/fileUpload' method='POST' target='frame1' enctype='multipart/form-data')
       label(for='file')
-        | &#x4E0A;&#x4F20;&#x6587;&#x4EF6;&#xFF1A;
-      |         
-      input#file(type='file', name='file', multiple='')
+        | 上传文件：
+      input#file(type='file' name='file' multiple='')
       br
-      |         
       p
-        | &#x9009;&#x62E9;&#x6253;&#x5370;&#x673A;&#xFF1A;
-        select(name='printers')
-          option(value='打印机1') &#x6253;&#x5370;&#x673A;1
-          |                 
-          option(value='打印机2') &#x6253;&#x5370;&#x673A;2
-          |                 
-          option(value='打印机3') &#x6253;&#x5370;&#x673A;3
-      |         
+        | 选择打印机：
+        select(name='printerName')
+          option(value='Hewlett-Packard HP LaserJet Pro MFP M128fp') Hewlett-Packard HP LaserJet Pro MFP M128fp
+          option(value='打印机2') 打印机2
+          option(value='打印机3') 打印机3
       p
-        | &#x7EB8;&#x5F20;&#x7C7B;&#x578B;&#xFF1A;
+        | 纸张类型：
         select(name='paperType')
           option(value='A4') A4
-          |                     
           option(value='A3') A3
-          |                     
           option(value='A2') A2
-          |                     
           option(value='A5') A5
-          |                     
           option(value='A6') A6
-          |                     
           option(value='letter') letter
-          |                     
           option(value='legal') legal
-      |         
       p
-        | &#x7EB8;&#x5F20;&#x65B9;&#x5411;&#xFF1A;
-        select(name='paperOrientation')
+        | 纸张方向：
+        select(name='paperDirection')
           option(value='portrait') portrait
-          |                 
           option(value='landscape') landscape
-      |         
       p
-        | &#x9875;&#x7801;&#xFF1A;
-        input(type='text', name='page', value='全部')
-      |         
+        | 页码1：
+        input(type='text' name='firstPageNumber' value='1')
       p
-      |         
+        | 页码2：
+        input(type='text' name='secondPageNumber' value='1')
       p
-        | &#x4EFD;&#x6570;&#xFF1A;
-        input(type='text', name='copies', value='1')
-      |         
       p
-      |  
-      input#sub(type='submit', value='提交')
-      |         
+        | 份数：
+        input(type='text' name='copies' value='1')
+      p
+      input#sub(type='submit' value='提交')
       p#msg
-    |     
-    iframe#ifr(name='frame1', frameborder='0', height='40', src='')
+    iframe#ifr(name='frame1' frameborder='0' height='40' src='')

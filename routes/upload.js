@@ -31,10 +31,19 @@ router.get('/', function(res, rep) {
 
 // 文件上传接口
 router.post('/', function(req, res) {
-    let printers = req.body.printers;
+    let printers = req.body.printerName;
     let paperType = req.body.paperType;
-    let paperOrientation = req.body.paperOrientation;
-    let page = req.body.page;
+    let paperOrientation = req.body.paperDirection;
+
+    //设置纸张页码范围
+    let pageBegin = req.body.firstPageNumber;
+    let pageEnd = req.body.secondPageNumber;
+    if (pageBegin == "undefined" || pageEnd == "undefined") {
+        var page = "";
+    } else {
+        var page = pageBegin + "-" + pageEnd;
+    }
+
     let copies = req.body.copies;
     for (let i = 0; i < req.files.length; i++) {
         console.log(req.files[i])
@@ -47,10 +56,16 @@ router.post('/', function(req, res) {
             }
         })
         let exe = process.cwd() + "\\src\\SumatraPDF.exe ";
-        let printTo = "-print-to " + printers + " ";
-        let printSetting = "-print-settings " + "paper=" + paperType + "," + paperOrientation + "," + page + " ";
-        let printCopies = "-print-settings " + copies + "x ";
 
+        //设置打印机名称
+        let printTo = "-print-to " + "\"" + printers + "\"" + " ";
+
+        //设置纸张类型
+        let printSetting = "-print-settings \"" + "paper=" + paperType + "," + paperOrientation + "," + page + " \" ";
+        let printCopies = "-print-settings " + copies + "x ";
+        if (printers == "") {
+            printTo = "";
+        } else if (printers == "") {}
         //组合打印命令
         // let comd = __dirname + "\\..\\src\\bin\\SumatraPDF.exe " + "-print-to " + printers + " -print-settings " + paperType + " " + __dirname + "/" + filename;
         let comd = exe + printTo + printSetting + printCopies + filename;

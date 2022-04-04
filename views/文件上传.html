@@ -9,13 +9,13 @@
 </head>
 
 <body>
-    <form id="upload-form" action="/upload" method="POST" target="frame1" enctype="multipart/form-data">
+    <form id="upload-form" action="/fileUpload" method="POST" target="frame1" enctype="multipart/form-data">
         <label for="file">上传文件：
         </label>
         <input id="file" type="file" name="file" multiple=""><br>
         <p>选择打印机：
-            <select name="printers">
-                <option value="打印机1">打印机1</option>
+            <select name="printerName">
+                <option value="Hewlett-Packard HP LaserJet Pro MFP M128fp">Hewlett-Packard HP LaserJet Pro MFP M128fp</option>
                 <option value="打印机2">打印机2</option>
                 <option value="打印机3">打印机3</option>
             </select></p>
@@ -30,11 +30,13 @@
                     <option value="legal">legal</option>
                 </select></p>
 
-        <p>纸张方向：<select name="paperOrientation">
+        <p>纸张方向：<select name="paperDirection">
                 <option value="portrait">portrait</option>
                 <option value="landscape">landscape</option>
             </select></p>
-        <p>页码：<input type="text" name="page" value="全部"></p>
+        <p>页码1：<input type="text" name="firstPageNumber" value="1"></p>
+        <p>页码2：<input type="text" name="secondPageNumber" value="1"></p>
+
         <p></p>
         <p>份数：<input type="text" name="copies" value="1"></p>
         <p></p> <input id="sub" type="submit" value="提交">
