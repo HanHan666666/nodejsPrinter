@@ -41,7 +41,7 @@ router.post('/', function(req, res) {
     if (pageBegin == "undefined" || pageEnd == "undefined") {
         var page = "";
     } else {
-        var page = pageBegin + "-" + pageEnd;
+        var page = "-print-settings \"" + pageBegin + "-" + pageEnd + "\" ";
     }
 
     let copies = req.body.copies;
@@ -58,17 +58,18 @@ router.post('/', function(req, res) {
         let exe = process.cwd() + "\\src\\SumatraPDF.exe ";
 
         //设置打印机名称
-        let printTo = "-print-to " + "\"" + printers + "\"" + " ";
+        let printTo = "-silent -print-to " + "\"" + printers + "\"" + " ";
 
         //设置纸张类型
-        let printSetting = "-print-settings \"" + "paper=" + paperType + "," + paperOrientation + "," + page + " \" ";
+        let printSetting = "-print-settings \"" + "paper=" + paperType + "," + paperOrientation + "\" ";
         let printCopies = "-print-settings " + copies + "x ";
-        if (printers == "") {
-            printTo = "";
-        } else if (printers == "") {}
+        if (copies == "1") {
+            printCopies = "";
+        }
+
+
         //组合打印命令
-        // let comd = __dirname + "\\..\\src\\bin\\SumatraPDF.exe " + "-print-to " + printers + " -print-settings " + paperType + " " + __dirname + "/" + filename;
-        let comd = exe + printTo + printSetting + printCopies + filename;
+        let comd = exe + printTo + printSetting + page + printCopies + filename;
         console.log(comd);
         //执行打印命令
         exec(comd)

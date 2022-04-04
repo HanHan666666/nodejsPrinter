@@ -9,7 +9,8 @@
     "pkg": {
         "assets": [
             "views/**/*",
-            "node_modules/**/*"
+            "node_modules/**/*",
+            "public/**/*"
         ],
         "outputPath": "dist"
     },
